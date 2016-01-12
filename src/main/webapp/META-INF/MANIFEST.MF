@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: GroceryApplicaton
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Welcome
+Specification-Title: GroceryApplicaton
+Implementation-Vendor-Id: com.ividevision.grocery
+Created-By: Apache Maven 3.3.3
+Build-Jdk: 1.8.0_65
+Specification-Version: 0.0.1-SNAPSHOT
+

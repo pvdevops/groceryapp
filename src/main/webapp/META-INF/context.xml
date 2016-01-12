@@ -1,6 +1,6 @@
 <Context>
   <Resource
-	   name="jdbc/groceryAppDB"
+	   name="jdbc/groceryappdb"
 	   auth="Container"
 	   type="javax.sql.DataSource"
 	   factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"

@@ -8,8 +8,11 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.stereotype.Component;
+
 import com.ividevision.grocery.model.Item;
 
+@Component
 public class ItemDAOImpl implements ItemDAOInterface {
 	
 	@PersistenceContext(unitName = "groceryAppDBPersistence")
@@ -18,7 +21,7 @@ public class ItemDAOImpl implements ItemDAOInterface {
 	public Item getItemById(Long id)
 	{
 	    try {
-	        String queryString = "SELECT item FROM item token WHERE token.id = ?1";
+	        String queryString = "SELECT item FROM Item item WHERE item.id = ?1";
 	        TypedQuery<Item> query = entityManager.createQuery(queryString,
 	            Item.class);
 	        query.setParameter(1, id);

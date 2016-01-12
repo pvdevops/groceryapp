@@ -8,14 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ITEM")
+@Table(name = "item")
 public class Item {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
 	private Long id;
 	
-	@Column(name = "name", nullable = false, unique = true)
+	@Column(name = "itemname", nullable = false, unique = true)
 	private String itemName;
 	
 	@Column(name = "price", nullable = false)
