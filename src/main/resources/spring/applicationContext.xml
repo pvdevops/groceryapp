@@ -17,20 +17,8 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
  
- <!--
-	<context:component-scan base-package="com.ividevision.grocery.service.*" />
-	<context:component-scan base-package="com.ividevision.grocery.rest.*" />
- -->
 
- <!--
-	<bean id="groceryService" class="com.ividevision.grocery.service.GroceryServiceImpl"/>
-    <bean id="itemDao" class="com.ividevision.grocery.dao.ItemDAOImpl"/>
- -->
-
-    <context:component-scan base-package="com.ividevision.grocery.controller" />
- 	<context:component-scan base-package="com.ividevision.grocery.service" />
-	<context:component-scan base-package="com.ividevision.grocery.dao" />
-	<context:component-scan base-package="com.ividevision.grocery.model" />
+    <context:component-scan base-package="com.ividevision.grocery.*" /> 	
 	<mvc:annotation-driven/> 
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

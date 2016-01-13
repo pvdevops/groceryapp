@@ -12,20 +12,20 @@
   </context-param>	
 
   <servlet>
-      <servlet-name>GroceryApp</servlet-name>
+      <servlet-name>jersey-servlet</servlet-name>
       <servlet-class>
-         org.springframework.web.servlet.DispatcherServlet
+          org.glassfish.jersey.servlet.ServletContainer
       </servlet-class>
       <init-param>
-          <param-name>contextConfigLocation</param-name>
-          <param-value>classpath:spring/applicationContext.xml</param-value>
+          <param-name>jersey.config.server.provider.packages</param-name>
+          <param-value>com.ividevision.grocery.resources</param-value>
       </init-param>
       <load-on-startup>1</load-on-startup>
    </servlet>
 
    <servlet-mapping>
-      <servlet-name>GroceryApp</servlet-name>
-      <url-pattern>/</url-pattern>
+      <servlet-name>jersey-servlet</servlet-name>
+      <url-pattern>/*</url-pattern>
    </servlet-mapping>
    
     <listener>
