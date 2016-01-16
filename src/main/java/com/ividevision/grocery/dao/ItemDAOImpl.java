@@ -21,10 +21,27 @@ public class ItemDAOImpl implements ItemDAOInterface {
 	public Item getItemById(Long id)
 	{
 	    try {
-	        String queryString = "SELECT item FROM Item item WHERE item.id = ?1";
+	        /* String queryString = "SELECT item FROM Item item WHERE item.id = ?1";
 	        TypedQuery<Item> query = entityManager.createQuery(queryString,
 	            Item.class);
-	        query.setParameter(1, id);
+	        query.setParameter(1, id); 
+
+	        return query.getSingleResult(); */
+	    	
+	    	return entityManager.find(Item.class, id);
+	        
+	      } catch (NoResultException e) {
+	        return null;
+	      }		
+	}
+	
+	public Item getItemByName(String itemName)
+	{
+	    try {
+	        String queryString = "SELECT item FROM Item item WHERE item.itemName = ?1";
+	        TypedQuery<Item> query = entityManager.createQuery(queryString,
+	            Item.class);
+	        query.setParameter(1, itemName);
 
 	        return query.getSingleResult();
 	        
@@ -32,19 +49,47 @@ public class ItemDAOImpl implements ItemDAOInterface {
 	        return null;
 	      }		
 	}
+	
+	public List<Item> getItems()
+	{
+	    try {
+	    	
+	        return entityManager.createQuery("SELECT item FROM Item item").getResultList();
+	        
+	      } catch (NoResultException e) {
+	        return null;
+	      }		
+	}
 	  
-	  public Long createItem(Long id)
+	  public Item createItem(Item item)
 	  {
-		  return 1L;
+		  try {
+		      entityManager.persist(item);
+		      entityManager.refresh(item);
+		     
+		      return item; 
+		      
+		  } catch (Exception e) {
+			  
+			  //throw e;
+			  return null;
+		  }	  
 	  }
 	  
-	  public void updateItem(Long id)
+	  public Item updateItem(Item oldItem, Item newItem)
 	  {
-		  return;
+	   	  Item existingItem = getItemByName(oldItem.getItemName());
+	   	  existingItem.setItemName(newItem.getItemName());
+	   	  existingItem.setPrice(newItem.getPrice());
+	      entityManager.merge(existingItem);
+	      entityManager.flush();
+	      return existingItem;
 	  }
 	  
-	  public void deleteItem(Long id)
+	  public void deleteItem(Item item)
 	  {
+	   	  Item existingItem = getItemByName(item.getItemName());
+	      entityManager.remove(existingItem);
 		  return;
 	  }
 	  

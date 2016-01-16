@@ -8,11 +8,13 @@ public interface ItemDAOInterface {
 	
   public Item getItemById(Long id);
   
-  public Long createItem(Long id);
+  public Item getItemByName(String itemName);
   
-  public void updateItem(Long id);
+  public Item createItem(Item item);
   
-  public void deleteItem(Long id);
+  public Item updateItem(Item oldItem, Item newItem);
+  
+  public void deleteItem(Item item);
   
   public Boolean checkItem(Long id);
   
